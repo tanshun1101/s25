@@ -1,0 +1,13 @@
+python manage.py makemigrations  生成表
+python manage.py migrate
+3.下一步思路
+  点击获取验证码
+    获取手机号
+    先后台发送ajax请求
+        手机
+        tpl=register
+    向手机发送验证码(ajax/sms/redis)
+    验证码失效处理 60s
+mac需要修改的配置：1.修改复制粘贴快捷键
+                2.修改开启关闭全面屏
+                3.安装搜狗输入法

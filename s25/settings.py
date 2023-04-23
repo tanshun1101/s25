@@ -97,6 +97,24 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://10.211.55.28:6379",  # 安装redis的主机的IP和端口号
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CONNECTION_POOL_KWARGS": {
+                "max_connections": 1000,
+                "encoding": "utf-8"
+            },
+            "PASSWORD": "maxwell"  # redis密码
+
+        }
+
+    }
+
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -127,9 +145,6 @@ TENCENT_SMS_TEMPLATE = {
     'register': 548760,
     'login': 548762
 }
-
-
-
 
 # 自己的短信模版
 SMS = 6
