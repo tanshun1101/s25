@@ -116,9 +116,26 @@ day03 用户认证
 1.实现注册
 1.1 展示注册页面
 1.1.1 创建web的应用 & 注册 ：python manage.py startapp web
+      并注册APP:
+      INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'app_01.apps.App01Config',
+        'web.apps.WebConfig'
+        ]
 
 1.1.2 模版文件路径处理
      由于app_01是学习的项目，因此在app_01下面的templates下创建app_01的包，并把html放到包目录下
+     母版准备
+     路由处理
+     1.1.5 注册页面展示
+     <1>. 母版中导航
+     <2>. 注册页面样式
+     <3>. ModelForm放到指定目录forms
 
 1.2 点击获取验证码
 1.3 点击注册
