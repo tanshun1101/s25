@@ -15,9 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from web.views import account
-
+from web.views import home
 urlpatterns = [
     # 加上name方便解析
     url(r'^register/$', account.register, name='register'),  # register
+    url(r'^login/sms/$', account.login_sms, name='login_sms'),  # send_sms
+    url(r'^login/$', account.login, name='login'),
+    url(r'^image/code$', account.image_code, name='image_code'),
+    url(r'^send/sms/$', account.send_sms, name='send_sms'),  # send_sms
+    url(r'^logout/$', account.logout, name='logout'),  # send_sms
+
+    url(r'^index/$', home.index, name='index'),
 
 ]

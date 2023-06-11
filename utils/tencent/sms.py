@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
 import ssl
-
+ssl._create_default_https_context = ssl._create_unverified_context
 from qcloudsms_py import SmsMultiSender, SmsSingleSender
 from qcloudsms_py.httpclient import HTTPError
 from django.conf import settings
@@ -19,6 +19,7 @@ def send_sms_single(phone_num, template_id, template_param_list):
     appkey = settings.TENCENT_SMS_APP_KEY  # 自己应用key
     sms_sign = settings.TENCENT_SMS_SIGN  # 自己腾讯云创建签名时填写的签名内容（使用公众号的话这个值一般是公众号全称或简称）
     sender = SmsSingleSender(appid, appkey)
+    print(appid, appkey, sms_sign)
     try:
         response = sender.send_with_param(86, phone_num, template_id, template_param_list, sign=sms_sign)
     except HTTPError as e:
