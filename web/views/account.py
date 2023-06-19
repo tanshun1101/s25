@@ -8,6 +8,9 @@ from web import models
 from django.db.models import Q
 from io import BytesIO
 from utils.image_code import check_code
+import uuid
+import datetime
+
 
 def register(request):
     """注册"""
@@ -18,12 +21,24 @@ def register(request):
     if form.is_valid():
         # 验证通过，写入数据库(密码要是密文)，使用form.save的好处是可以自动剔除数据库中不存在的字段，如验证码，确认密码
         # form.instance.password = "dasadaasd:fj"
-        form.save()
-        # 下面代码作用一样, 剔除验证码与确认密码字段
-        # data = form.cleaned_data
-        # data.pop('code')
-        # data.pop('confirm_password')
-        # instance = models.UserInfo.objects.create(**data)
+
+        # 用户表中新建一条数据（注册）
+        instance = form.save()
+        # 创建交易记录
+        # 方式一 （方式1对应auth方式1）
+        policy_object = models.PricePolicy.objects.filter(category=1, title="个人免费版").first()
+        models.Transaction.objects.create(
+            status=2,
+            order=str(uuid.uuid4()),
+            user=instance,
+            price_policy=policy_object,
+            count=0,
+            price=0,
+            start_datetime=datetime.datetime.now()
+        )
+
+        # 方式二，什么都不写（方式2对应auth方式2）
+
         return JsonResponse({'status': True, 'data': '/login/'})
 
     return JsonResponse({'status': False, 'error': form.errors})

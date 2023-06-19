@@ -11,6 +11,8 @@ class UserInfo(models.Model):
     mobile_phone = models.CharField(verbose_name='手机号', max_length=32)
     password = models.CharField(verbose_name='密码', max_length=32)
 
+    # price_policy = models.ForeignKey(verbose_name="价格策略", to='PricePolicy', null=True, blank=True)
+
 
 # 价格策略表
 class PricePolicy(models.Model):

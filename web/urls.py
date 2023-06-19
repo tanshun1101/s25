@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from web.views import account
 from web.views import home
+from web.views import project
 urlpatterns = [
     # 加上name方便解析
     url(r'^register/$', account.register, name='register'),  # register
@@ -24,7 +25,9 @@ urlpatterns = [
     url(r'^image/code$', account.image_code, name='image_code'),
     url(r'^send/sms/$', account.send_sms, name='send_sms'),  # send_sms
     url(r'^logout/$', account.logout, name='logout'),  # send_sms
-
     url(r'^index/$', home.index, name='index'),
+
+    # 项目管理
+    url(r'^project/list$', project.project_list, name='project_list'),
 
 ]

@@ -123,7 +123,6 @@ CACHES = {
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'zh-hans'
 
-
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -149,9 +148,16 @@ TENCENT_SMS_TEMPLATE = {
     'register': 548760,
     'login': 548762
 }
-
 # 自己的短信模版
 SMS = 6
+##登陆白名单，无需登陆就可以访问的页面##############
+WHITE_REGEX_URL_LIST = [
+    "/register/",
+    "/send/sms/",
+    "/login/",
+    "/image/code",
+    "/index/",
+]
 
 try:
     from .local_settings import *

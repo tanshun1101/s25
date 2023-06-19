@@ -55,7 +55,7 @@ def check_code(width=120, height=30, char_length=5, font_file='Monaco.ttf', font
 
 if __name__ == '__main__':
     image_object, code = check_code()
-    print(code)
+    # print(code)
     # 把图片写入文件
     # with open('code.png', 'wb') as f:
     #     image_object.save(f, format='png')
@@ -70,11 +70,11 @@ if __name__ == '__main__':
     #     img.save(f,format='png')
 
     # 3. 把图片的内容写入内存(Python3)
-    from io import BytesIO
-    stream = BytesIO()
-    image_object.save(stream, 'png')
-    #获取图片内容
-    stream.getvalue()
+    # from io import BytesIO
+    # stream = BytesIO()
+    # image_object.save(stream, 'png')
+    # #获取图片内容
+    # stream.getvalue()
 
     # 4. 写入内存（Python2）
     # import StringIO

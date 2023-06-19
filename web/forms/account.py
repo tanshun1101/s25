@@ -201,7 +201,7 @@ class LoginForm(BootStrapForm, forms.Form):
         code = self.cleaned_data['code']
 
         # 去session中去获取自己的验证码
-        session_code = self.request.session.get('iamge_code')
+        session_code = self.request.session.get('image_code')
         if not session_code:
             raise ValidationError('验证码已过期，请重新获取')
         if code.strip().upper() != session_code.strip().upper():
